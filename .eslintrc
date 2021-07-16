@@ -1,6 +1,13 @@
 {
-  "extends": ["airbnb", "prettier", "prettier/react"],
+  "extends": ["airbnb", "prettier"],
+  "env": {
+    "jest": true
+  },
+  "globals": {
+    "document": true
+  },
   "rules": {
+    "import/prefer-default-export": "off",
     // suppress errors for missing 'import React' in files
     "react/react-in-jsx-scope": "off",
     // allow jsx syntax in js files
