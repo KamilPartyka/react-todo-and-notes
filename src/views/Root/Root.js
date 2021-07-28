@@ -5,6 +5,13 @@ import Button from '../../components/atoms/Button/Button';
 import GlobalStyle from '../../theme/GlobalStyles';
 import Logo from '../../components/atoms/Logo/Logo';
 import Input from '../../components/atoms/Input/Input';
+import ButtonMenu from '../../components/atoms/ButtonMenu/ButtonMenu';
+import Card from '../../components/molecules/Card/Card';
+
+const BUTTON_TEXT = {
+  todos: "ToDo's",
+  notes: 'Notes',
+};
 
 const Root = () => (
   <HelmetProvider>
@@ -22,8 +29,15 @@ const Root = () => (
         <h1>Hello World</h1>
         <Logo small />
         <Button title="close" color="secondary" />
+        <Button title="REGISTER" color="tertiary" />
         <br /> <br />
         <Input search />
+        <Input />
+        <br /> <br />
+        <ButtonMenu buttonText={BUTTON_TEXT} text={BUTTON_TEXT.notes} />
+        <ButtonMenu buttonText={BUTTON_TEXT} text={BUTTON_TEXT.todos} />
+        <br /> <br />
+        <Card />
       </>
     </ThemeProvider>
   </HelmetProvider>
