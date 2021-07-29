@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types';
 import { StyledButton } from './styles';
 
-const Button = ({ title, color }) => (
-  <StyledButton color={color} type="button">
-    {title}
+const Button = ({ children, color, isSmall }) => (
+  <StyledButton isSmall={isSmall} color={color} type="button">
+    {children}
   </StyledButton>
 );
 
 Button.propTypes = {
-  title: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
+  isSmall: PropTypes.bool,
+};
+Button.defaultProps = {
+  isSmall: false,
 };
 
 export default Button;

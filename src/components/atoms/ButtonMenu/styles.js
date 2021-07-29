@@ -11,8 +11,7 @@ export const StyledButtonMenu = styled.button`
   font-weight: ${({ theme }) => theme.bold};
   position: relative;
   padding-left: 4rem;
-  color: ${({ text, buttonText, theme }) =>
-    text === buttonText.notes ? theme.tertiary : theme.secondary};
+  color: ${({ buttonType, theme }) => theme[buttonType.color]};
   cursor: pointer;
 
   ::before {
@@ -22,15 +21,15 @@ export const StyledButtonMenu = styled.button`
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    background-image: url(${({ text, buttonText }) => (text === buttonText.notes ? note : list)});
+    background-image: url(${({ buttonType }) => (buttonType.color === 'secondary' ? list : note)});
     background-size: 4rem;
     background-position: 0.5rem 50%;
     background-repeat: no-repeat;
     width: 5rem;
     height: 5rem;
 
-    ${({ text, buttonText, theme }) =>
-      text === buttonText.notes ? theme.secondaryFilter : theme.tertiaryFilter}
+    ${({ buttonType, theme }) =>
+      buttonType.color === 'secondary' ? theme.secondaryFilter : theme.tertiaryFilter}
   }
 
   :active {

@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import { StyledLogo } from './styles';
 
-const Logo = ({ small }) => <StyledLogo small={small}>T&N</StyledLogo>;
+const Logo = ({ isSmall }) => <StyledLogo isSmall={isSmall}>T&N</StyledLogo>;
 
 Logo.propTypes = {
-  small: PropTypes.bool,
+  isSmall: PropTypes.bool,
 };
 
 Logo.defaultProps = {
-  small: false,
+  isSmall: false,
 };
 
 export default Logo;
