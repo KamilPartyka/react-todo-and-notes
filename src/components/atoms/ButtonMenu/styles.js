@@ -3,14 +3,15 @@ import note from '../../../assets/note.svg';
 import list from '../../../assets/list.svg';
 
 export const StyledButtonMenu = styled.button`
-  height: 5rem;
-  width: 13rem;
-  font-size: 2rem;
+  display: block;
+  height: 6rem;
+  width: 14rem;
+  font-size: 2.3rem;
   background-color: transparent;
   border: none;
   font-weight: ${({ theme }) => theme.bold};
   position: relative;
-  padding-left: 4rem;
+  padding-left: 5.2rem;
   color: ${({ buttonType, theme }) => theme[buttonType.color]};
   cursor: pointer;
 
@@ -22,17 +23,13 @@ export const StyledButtonMenu = styled.button`
     top: 50%;
     transform: translateY(-50%);
     background-image: url(${({ buttonType }) => (buttonType.color === 'secondary' ? list : note)});
-    background-size: 4rem;
+    background-size: 4.5rem 4.5rem;
     background-position: 0.5rem 50%;
     background-repeat: no-repeat;
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 6rem;
 
     ${({ buttonType, theme }) =>
       buttonType.color === 'secondary' ? theme.secondaryFilter : theme.tertiaryFilter}
-  }
-
-  :active {
-    background-color: rgba(38, 70, 83, 0.55);
   }
 `;

@@ -1,7 +1,11 @@
-// import PropTypes from 'prop-types'
+import UserPageTemplate from '../templates/UserPageTemplate';
 
-const Todo = () => <h1>ToDo</h1>;
-
-Todo.propTypes = {};
+const Todo = () => (
+  <UserPageTemplate>
+    <>
+      <h1>Todos</h1>
+    </>
+  </UserPageTemplate>
+);
 
 export default Todo;

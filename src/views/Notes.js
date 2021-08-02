@@ -1,7 +1,11 @@
-// import PropTypes from 'prop-types';
+import UserPageTemplate from '../templates/UserPageTemplate';
 
-const Notes = () => <h1>Notes</h1>;
-
-Notes.propTypes = {};
+const Notes = () => (
+  <UserPageTemplate>
+    <>
+      <h1>Notes</h1>
+    </>
+  </UserPageTemplate>
+);
 
 export default Notes;
