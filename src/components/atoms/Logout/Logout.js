@@ -1,5 +1,5 @@
-import { StyledButton } from './styles';
+import { StyledLogout } from './styles';
 
-const Logout = () => <StyledButton type="button" />;
+const Logout = () => <StyledLogout />;
 
 export default Logout;

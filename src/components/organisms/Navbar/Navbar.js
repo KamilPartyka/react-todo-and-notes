@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import ButtonMenu from '../../atoms/ButtonMenu/ButtonMenu';
+import NavLinkButton from '../../atoms/NavLinkButton/NavLinkButton';
 import Logo from '../../atoms/Logo/Logo';
 import Logout from '../../atoms/Logout/Logout';
 import { StyledWrapper, StyledInnerWrapper, StyledLinksList } from './styled';
@@ -16,11 +16,6 @@ const TYPE = {
 };
 
 const Navbar = () => (
-  // const history = useHistory();
-  // const navLinkHandler = (address) => {
-  //   history.push(address);
-  // };
-
   <StyledWrapper>
     <NavLink exact to="/">
       <Logo isSmall />
@@ -29,37 +24,30 @@ const Navbar = () => (
     <StyledInnerWrapper>
       <StyledLinksList>
         <li>
-          <ButtonMenu
+          <NavLinkButton
             exact
             to="/"
             activeStyle={{
               backgroundColor: 'rgba(38, 70, 83, 0.55)',
             }}
-            as={NavLink}
             buttonType={TYPE.todos}
             text={TYPE.todos.text}
           />
         </li>
         <li>
-          <ButtonMenu
+          <NavLinkButton
             to="/notes"
             activeStyle={{
               backgroundColor: 'rgba(38, 70, 83, 0.55)',
             }}
-            as={NavLink}
             buttonType={TYPE.notes}
             text={TYPE.notes.text}
           />
         </li>
-        {/* <li>
-          <ButtonMenu
-            buttonType={TYPE.notes}
-            text={TYPE.notes.text}
-            // callbackFn={() => navLinkHandler('/notes')}
-          />
-        </li> */}
       </StyledLinksList>
-      <Logout exact to="/" />
+      <NavLink exact to="/">
+        <Logout />
+      </NavLink>
     </StyledInnerWrapper>
   </StyledWrapper>
 );

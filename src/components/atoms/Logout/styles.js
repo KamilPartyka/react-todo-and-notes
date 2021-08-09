@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import signOut from '../../../assets/signOut.svg';
 
-export const StyledButton = styled.button`
+export const StyledLogout = styled.span`
+  display: inline-block;
   height: 5rem;
   width: 5rem;
   background-image: url(${signOut});

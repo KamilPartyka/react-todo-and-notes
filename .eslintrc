@@ -7,6 +7,7 @@
     "document": true
   },
   "rules": {
+    "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "off",
     // suppress errors for missing 'import React' in files
     "react/react-in-jsx-scope": "off",
