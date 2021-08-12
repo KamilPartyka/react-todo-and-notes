@@ -5,7 +5,6 @@ export const StyledWrapper = styled.nav`
   align-items: center;
   background-color: ${({ theme }) => theme.primary};
   padding: 0 1rem 0 3rem;
-  width: 100vw;
   height: 6rem;
   overflow: hidden;
 `;

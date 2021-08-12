@@ -3,17 +3,7 @@ import NavLinkButton from '../../atoms/NavLinkButton/NavLinkButton';
 import Logo from '../../atoms/Logo/Logo';
 import Logout from '../../atoms/Logout/Logout';
 import { StyledWrapper, StyledInnerWrapper, StyledLinksList } from './styled';
-
-const TYPE = {
-  todos: {
-    text: "ToDo's",
-    color: 'secondary',
-  },
-  notes: {
-    text: 'Notes',
-    color: 'tertiary',
-  },
-};
+import { TYPE } from '../../../utils/constants';
 
 const Navbar = () => (
   <StyledWrapper>
@@ -26,7 +16,7 @@ const Navbar = () => (
         <li>
           <NavLinkButton
             exact
-            to="/"
+            to="/todos"
             activeStyle={{
               backgroundColor: 'rgba(38, 70, 83, 0.55)',
             }}

@@ -7,47 +7,49 @@ import {
   StyledDateInfo,
   StyledParagraph,
   StyledList,
+  StyledListItem,
 } from './styles';
 
-const todoListMockap = [
-  {
-    id: 1,
-    post: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-  },
-  {
-    id: 2,
-    post: 'Suscipit nemo ducimus fuga repellendus illum',
-  },
-];
+const Card = ({ cardType, title, created, content, id }) => {
+  const slicedContentArr = content.split(',');
+  const arrWithUniqueKey = slicedContentArr.map((item, index) => ({
+    text: item,
+    id: `${id}_${index}`,
+  }));
 
-const Card = ({ cardType }) => (
-  <StyledWrapper>
-    <StyledInnerWrapper color={cardType.color}>
-      <Heading>test heading</Heading>
-      <StyledDateInfo>3 days</StyledDateInfo>
-    </StyledInnerWrapper>
-    <StyledInnerWrapper flex>
-      {cardType.color === 'secondary' ? (
-        <StyledList>
-          {todoListMockap.map((item) => (
-            <li key={item.id}>{item.post}</li>
-          ))}
-        </StyledList>
-      ) : (
-        <StyledParagraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nemo ducimus fuga
-          repellendus illum
-        </StyledParagraph>
-      )}
-      <Button color="lightGrey" isSmall>
-        remove
-      </Button>
-    </StyledInnerWrapper>
-  </StyledWrapper>
-);
+  return (
+    <StyledWrapper>
+      <StyledInnerWrapper color={cardType.color}>
+        <Heading>{title}</Heading>
+        <StyledDateInfo>{created}</StyledDateInfo>
+      </StyledInnerWrapper>
+      <StyledInnerWrapper flex>
+        {cardType.color === 'secondary' ? (
+          <StyledList>
+            {arrWithUniqueKey.map((item) => (
+              <li key={item.id} id={`id${item.id}`}>
+                <StyledListItem>{item.text}</StyledListItem>
+              </li>
+            ))}
+          </StyledList>
+        ) : (
+          <StyledParagraph>{content}</StyledParagraph>
+        )}
+        <Button color="lightGrey" isSmall>
+          remove
+        </Button>
+      </StyledInnerWrapper>
+    </StyledWrapper>
+  );
+};
 
 Card.propTypes = {
   cardType: PropTypes.objectOf(PropTypes.string.isRequired, PropTypes.string.isRequired).isRequired,
+  title: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
+Card.defaultProps = {};
 
 export default Card;
