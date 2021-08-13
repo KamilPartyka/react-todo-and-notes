@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import UserPageTemplate from './UserPageTemplate';
+import { routes } from '../routes';
 
-const DetailsTemplate = () => (
-  <div>
-    <h3>Details</h3>
-    <p>
-      Lorem impum dolor sit amet consectetur, adipisicing elit. Voluptates fugit minima veritatis
-      dolore, atque illo sequi excepturi fugiat deleniti!
-    </p>
-    <Link to="/">go back</Link>
-  </div>
+const DetailsTemplate = ({ children }) => (
+  <UserPageTemplate>
+    {children}
+    <Link to={routes.home}>go back</Link>
+  </UserPageTemplate>
 );
 
+DetailsTemplate.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]).isRequired,
+};
 export default DetailsTemplate;

@@ -3,16 +3,17 @@ import MainTemplate from '../templates/MainTemplate';
 import Todo from './Todo';
 import Notes from './Notes';
 import DetailsPage from './DetailsPage';
+import { routes } from '../routes';
 
 const Root = () => (
   <BrowserRouter>
     <MainTemplate>
       <Switch>
-        <Route exact path="/" component={() => <Redirect to="/todos" />} />
-        <Route exact path="/todos" component={Todo} />
-        <Route path="/todos/:id" component={DetailsPage} />
-        <Route exact path="/notes" component={Notes} />
-        <Route path="/notes/:id" component={DetailsPage} />
+        <Route exact path={routes.home} component={() => <Redirect to={routes.todos} />} />
+        <Route exact path={routes.todos} component={Todo} />
+        <Route path={routes.todo} component={DetailsPage} />
+        <Route exact path={routes.notes} component={Notes} />
+        <Route path={routes.note} component={DetailsPage} />
       </Switch>
     </MainTemplate>
   </BrowserRouter>

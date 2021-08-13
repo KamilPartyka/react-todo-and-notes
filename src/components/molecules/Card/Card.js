@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import Button from '../../atoms/Button/Button';
 import Heading from '../../atoms/Heading/Heading';
 import {
@@ -11,6 +13,14 @@ import {
 } from './styles';
 
 const Card = ({ cardType, title, created, content, id }) => {
+  const [state, setState] = useState(false);
+
+  const handleCardClick = () => setState(true);
+
+  if (state) {
+    return <Redirect to={`${cardType.link}/${id}`} />;
+  }
+
   const slicedContentArr = content.split(',');
   const arrWithUniqueKey = slicedContentArr.map((item, index) => ({
     text: item,
@@ -18,7 +28,7 @@ const Card = ({ cardType, title, created, content, id }) => {
   }));
 
   return (
-    <StyledWrapper>
+    <StyledWrapper onClick={handleCardClick}>
       <StyledInnerWrapper color={cardType.color}>
         <Heading>{title}</Heading>
         <StyledDateInfo>{created}</StyledDateInfo>

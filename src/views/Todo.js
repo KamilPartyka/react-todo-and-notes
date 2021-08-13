@@ -1,6 +1,6 @@
-import UserPageTemplate from '../templates/UserPageTemplate';
 import Card from '../components/molecules/Card/Card';
 import { TYPE } from '../utils/constants';
+import GridTemplate from '../templates/GridTemplate';
 
 const todos = [
   {
@@ -34,7 +34,7 @@ const todos = [
 ];
 
 const Todo = () => (
-  <UserPageTemplate pageType={TYPE.todos} numerOfItems={todos.length}>
+  <GridTemplate pageType={TYPE.todos} numerOfItems={todos.length}>
     <>
       {todos.map((todo) => (
         <Card
@@ -47,7 +47,7 @@ const Todo = () => (
         />
       ))}
     </>
-  </UserPageTemplate>
+  </GridTemplate>
 );
 
 export default Todo;

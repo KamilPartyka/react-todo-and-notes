@@ -4,10 +4,11 @@ import Logo from '../../atoms/Logo/Logo';
 import Logout from '../../atoms/Logout/Logout';
 import { StyledWrapper, StyledInnerWrapper, StyledLinksList } from './styled';
 import { TYPE } from '../../../utils/constants';
+import { routes } from '../../../routes';
 
 const Navbar = () => (
   <StyledWrapper>
-    <NavLink exact to="/">
+    <NavLink exact to={routes.home}>
       <Logo isSmall />
     </NavLink>
 
@@ -15,8 +16,7 @@ const Navbar = () => (
       <StyledLinksList>
         <li>
           <NavLinkButton
-            exact
-            to="/todos"
+            to={routes.todos}
             activeStyle={{
               backgroundColor: 'rgba(38, 70, 83, 0.55)',
             }}
@@ -26,7 +26,7 @@ const Navbar = () => (
         </li>
         <li>
           <NavLinkButton
-            to="/notes"
+            to={routes.notes}
             activeStyle={{
               backgroundColor: 'rgba(38, 70, 83, 0.55)',
             }}
@@ -35,7 +35,7 @@ const Navbar = () => (
           />
         </li>
       </StyledLinksList>
-      <NavLink exact to="/">
+      <NavLink exact to={routes.home}>
         <Logout />
       </NavLink>
     </StyledInnerWrapper>

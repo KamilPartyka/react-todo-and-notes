@@ -7,6 +7,8 @@
     "document": true
   },
   "rules": {
+    "no-unused-vars": 1,
+    "react/prop-types": 1,
     "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "off",
     // suppress errors for missing 'import React' in files
