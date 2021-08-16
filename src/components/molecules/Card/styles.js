@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import Paragraph from '../../atoms/Paragraph/Paragraph';
-import plus from '../../../assets/plus.svg';
 
 export const StyledWrapper = styled.div`
   background: ${({ theme }) => theme.white};
@@ -9,7 +8,7 @@ export const StyledWrapper = styled.div`
   border-radius: 1rem;
   overflow: hidden;
   min-height: 33rem;
-
+  max-width: 39rem;
   display: grid;
   grid-template-rows: 0.25fr 1fr;
 `;
@@ -58,30 +57,4 @@ export const StyledListItem = styled.div`
   position: relative;
   padding: 0.3rem;
   padding-right: 2rem;
-
-  ${({ isDelete }) =>
-    isDelete &&
-    css`
-      text-decoration: line-through;
-    `}
-`;
-
-export const StyledDeleteIcon = styled.span`
-  display: none;
-  height: 2rem;
-  width: 2rem;
-  background-image: url(${plus});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
-
-  ${StyledListItem}:hover & {
-    display: inline-block;
-  }
 `;

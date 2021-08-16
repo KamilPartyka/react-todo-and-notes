@@ -10,8 +10,8 @@ const StyledWrapper = styled.div`
 `;
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5rem;
+  grid-template-columns: repeat(auto-fill, minmax(39rem, 1fr));
+  grid-gap: 2rem;
 `;
 const StyledPageHeader = styled.div`
   h2,

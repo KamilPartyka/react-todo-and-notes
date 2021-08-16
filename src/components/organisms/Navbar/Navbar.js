@@ -20,7 +20,7 @@ const Navbar = () => (
             activeStyle={{
               backgroundColor: 'rgba(38, 70, 83, 0.55)',
             }}
-            buttonType={TYPE.todos}
+            pageType={TYPE.todos}
             text={TYPE.todos.text}
           />
         </li>
@@ -30,7 +30,7 @@ const Navbar = () => (
             activeStyle={{
               backgroundColor: 'rgba(38, 70, 83, 0.55)',
             }}
-            buttonType={TYPE.notes}
+            pageType={TYPE.notes}
             text={TYPE.notes.text}
           />
         </li>

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { StyledButton } from './styles';
 
-const Button = ({ children, color, isSmall }) => (
-  <StyledButton isSmall={isSmall} color={color} type="button">
+const Button = ({ children, color, isSmall, ...props }) => (
+  <StyledButton isSmall={isSmall} color={color} type="button" {...props}>
     {children}
   </StyledButton>
 );

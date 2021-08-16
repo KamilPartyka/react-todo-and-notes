@@ -14,7 +14,7 @@ export const StyledNavLinkButton = styled(NavLink)`
   position: relative;
   padding-left: 5.3rem;
   padding-top: 1.5rem;
-  color: ${({ buttontype, theme }) => theme[buttontype.color]};
+  color: ${({ pagetype, theme }) => theme[pagetype.color]};
   cursor: pointer;
   text-decoration-line: none;
 
@@ -25,14 +25,14 @@ export const StyledNavLinkButton = styled(NavLink)`
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    background-image: url(${({ buttontype }) => (buttontype.color === 'secondary' ? list : note)});
+    background-image: url(${({ pagetype }) => (pagetype.color === 'secondary' ? list : note)});
     background-size: 4.5rem 4.5rem;
     background-position: 0.5rem 50%;
     background-repeat: no-repeat;
     width: 6rem;
     height: 6rem;
 
-    ${({ buttontype, theme }) =>
-      buttontype.color === 'secondary' ? theme.secondaryFilter : theme.tertiaryFilter}
+    ${({ pagetype, theme }) =>
+      pagetype.color === 'secondary' ? theme.secondaryFilter : theme.tertiaryFilter}
   }
 `;
