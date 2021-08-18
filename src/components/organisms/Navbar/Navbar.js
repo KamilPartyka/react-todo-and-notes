@@ -1,10 +1,14 @@
 import { NavLink } from 'react-router-dom';
-import NavLinkButton from '../../atoms/NavLinkButton/NavLinkButton';
-import Logo from '../../atoms/Logo/Logo';
-import Logout from '../../atoms/Logout/Logout';
-import { StyledWrapper, StyledInnerWrapper, StyledLinksList } from './styled';
-import { TYPE } from '../../../utils/constants';
-import { routes } from '../../../routes';
+import NavLinkButton from 'components/atoms/NavLinkButton/NavLinkButton';
+import Logo from 'components/atoms/Logo/Logo';
+import Logout from 'components/atoms/Logout/Logout';
+import { TYPE } from 'utils/constants';
+import { routes } from 'routes';
+import {
+  StyledWrapper,
+  StyledInnerWrapper,
+  StyledLinksList,
+} from 'components/organisms/Navbar/styled';
 
 const Navbar = () => (
   <StyledWrapper>

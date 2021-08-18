@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import search from '../../../assets/search.svg';
+import search from 'assets/search.svg';
 
 export const StyledInput = styled.input`
   padding: 1rem 2rem;

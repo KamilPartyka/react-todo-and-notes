@@ -1,17 +1,19 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Input from '../components/atoms/Input/Input';
-import Heading from '../components/atoms/Heading/Heading';
-import Paragraph from '../components/atoms/Paragraph/Paragraph';
-import UserPageTemplate from './UserPageTemplate';
+import Input from 'components/atoms/Input/Input';
+import Heading from 'components/atoms/Heading/Heading';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import UserPageTemplate from 'templates/UserPageTemplate';
 
 const StyledWrapper = styled.div`
   padding: 3rem;
 `;
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(39rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(38rem, 1fr));
   grid-gap: 2rem;
+  justify-items: center;
+  align-items: center;
 `;
 const StyledPageHeader = styled.div`
   h2,

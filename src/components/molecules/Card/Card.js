@@ -1,8 +1,13 @@
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import Button from '../../atoms/Button/Button';
-import Heading from '../../atoms/Heading/Heading';
+import styled from 'styled-components';
+import Button from 'components/atoms/Button/Button';
+import Heading from 'components/atoms/Heading/Heading';
+import { removeItem } from 'redux/actions';
+import { TYPE } from 'utils/constants';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import {
   StyledWrapper,
   StyledInnerWrapper,
@@ -10,16 +15,18 @@ import {
   StyledParagraph,
   StyledList,
   StyledListItem,
-} from './styles';
+} from 'components/molecules/Card/styles';
+
+// fixme
+const StyledReadMe = styled(Paragraph)`
+  font-weight: bold;
+  cursor: pointer;
+`;
 
 const Card = ({ cardType, title, created, content, id }) => {
+  const dispatch = useDispatch();
   const [state, setState] = useState(false);
-
   const handleCardClick = () => setState(true);
-
-  if (state) {
-    return <Redirect to={`${cardType.link}/${id}`} />;
-  }
 
   const slicedContentArr = content.split(',');
   const arrWithUniqueKey = slicedContentArr.map((item, index) => ({
@@ -27,14 +34,18 @@ const Card = ({ cardType, title, created, content, id }) => {
     id: `${id}_${index}`,
   }));
 
+  if (state) {
+    return <Redirect to={`${cardType.link}/${id}`} />;
+  }
+
   return (
-    <StyledWrapper onClick={handleCardClick}>
+    <StyledWrapper>
       <StyledInnerWrapper color={cardType.color}>
         <Heading>{title}</Heading>
         <StyledDateInfo>{created}</StyledDateInfo>
       </StyledInnerWrapper>
       <StyledInnerWrapper flex>
-        {cardType.color === 'secondary' ? (
+        {cardType.name === TYPE.todos.name ? (
           <StyledList>
             {arrWithUniqueKey.map((item) => (
               <li key={item.id} id={`id${item.id}`}>
@@ -45,7 +56,8 @@ const Card = ({ cardType, title, created, content, id }) => {
         ) : (
           <StyledParagraph>{content}</StyledParagraph>
         )}
-        <Button color="lightGrey" isSmall>
+        <StyledReadMe onClick={handleCardClick}>Read more</StyledReadMe>
+        <Button color="lightGrey" isSmall onClick={() => dispatch(removeItem(cardType.name, id))}>
           remove
         </Button>
       </StyledInnerWrapper>
@@ -60,6 +72,5 @@ Card.propTypes = {
   content: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
 };
-Card.defaultProps = {};
 
 export default Card;

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { StyledLogo } from './styles';
+import { StyledLogo } from 'components/atoms/Logo/styles';
 
 const Logo = ({ isSmall }) => <StyledLogo isSmall={isSmall}>T&N</StyledLogo>;
 

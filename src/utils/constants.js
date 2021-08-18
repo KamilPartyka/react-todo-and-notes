@@ -2,11 +2,13 @@ export const TYPE = {
   todos: {
     text: "ToDo's",
     color: 'secondary',
-    link: 'todos',
+    link: '/todos',
+    name: 'todos',
   },
   notes: {
     text: 'Notes',
     color: 'tertiary',
-    link: 'notes',
+    link: '/notes',
+    name: 'notes',
   },
 };

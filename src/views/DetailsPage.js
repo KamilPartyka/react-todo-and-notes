@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import PropTypes, { oneOfType } from 'prop-types';
-import DetailsTemplate from '../templates/DetailsTemplate';
-import { routes } from '../routes';
-import { TYPE } from '../utils/constants';
+import DetailsTemplate from 'templates/DetailsTemplate';
+import { routes } from 'routes';
+import { TYPE } from 'utils/constants';
 
 const dummyArticle = {
   id: 1,
@@ -17,10 +17,10 @@ const DetailsPage = ({ match }) => {
 
   useEffect(() => {
     if (match.path === routes.note) {
-      setState(TYPE.notes.color);
+      setState(TYPE.notes.name);
     }
     if (match.path === routes.todo) {
-      setState(TYPE.todos.color);
+      setState(TYPE.todos.name);
     }
   }, []);
 

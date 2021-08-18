@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import note from '../../../assets/note.svg';
-import list from '../../../assets/list.svg';
+import note from 'assets/note.svg';
+import list from 'assets/list.svg';
+import { TYPE } from 'utils/constants';
 
 export const StyledNavLinkButton = styled(NavLink)`
   display: inline-block;
@@ -25,7 +26,7 @@ export const StyledNavLinkButton = styled(NavLink)`
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    background-image: url(${({ pagetype }) => (pagetype.color === 'secondary' ? list : note)});
+    background-image: url(${({ pagetype }) => (pagetype.name === TYPE.todos.name ? list : note)});
     background-size: 4.5rem 4.5rem;
     background-position: 0.5rem 50%;
     background-repeat: no-repeat;
@@ -33,6 +34,6 @@ export const StyledNavLinkButton = styled(NavLink)`
     height: 6rem;
 
     ${({ pagetype, theme }) =>
-      pagetype.color === 'secondary' ? theme.secondaryFilter : theme.tertiaryFilter}
+      pagetype.name === TYPE.todos.name ? theme.secondaryFilter : theme.tertiaryFilter}
   }
 `;

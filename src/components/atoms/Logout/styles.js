@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import signOut from '../../../assets/signOut.svg';
+import signOut from 'assets/signOut.svg';
 
 export const StyledLogout = styled.span`
   display: inline-block;

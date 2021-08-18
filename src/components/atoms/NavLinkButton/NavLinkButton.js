@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { StyledNavLinkButton } from './styles';
+import { StyledNavLinkButton } from 'components/atoms/NavLinkButton/styles';
 
 const NavLinkButton = ({ text, pageType, ...props }) => (
   <StyledNavLinkButton text={text} pagetype={pageType} {...props}>

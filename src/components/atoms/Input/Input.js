@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { StyledInput } from './styles';
+import { StyledInput } from 'components/atoms/Input/styles';
 
 const Input = ({ search, placeholder }) => <StyledInput placeholder={placeholder} icon={search} />;
 

@@ -1,8 +1,8 @@
 import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { theme } from '../theme/mainTheme';
-import GlobalStyle from '../theme/GlobalStyles';
+import { theme } from 'theme/mainTheme';
+import GlobalStyle from 'theme/GlobalStyles';
 
 const MainTemplate = ({ children }) => (
   <>
@@ -20,7 +20,6 @@ const MainTemplate = ({ children }) => (
     </HelmetProvider>
   </>
 );
-
 MainTemplate.propTypes = {
   children: PropTypes.element.isRequired,
 };

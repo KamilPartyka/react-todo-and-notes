@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import Navbar from '../components/organisms/Navbar/Navbar';
+import Navbar from 'components/organisms/Navbar/Navbar';
 
 const UserPageTemplate = ({ children }) => (
   <>

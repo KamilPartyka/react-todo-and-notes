@@ -1,4 +1,4 @@
-import { StyledLogout } from './styles';
+import { StyledLogout } from 'components/atoms/Logout/styles';
 
 const Logout = () => <StyledLogout />;
 

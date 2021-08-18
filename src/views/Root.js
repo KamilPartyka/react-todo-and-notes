@@ -1,22 +1,26 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import MainTemplate from '../templates/MainTemplate';
-import Todo from './Todo';
-import Notes from './Notes';
-import DetailsPage from './DetailsPage';
-import { routes } from '../routes';
+import { Provider } from 'react-redux';
+import DetailsPage from 'views/DetailsPage';
+import store from 'redux/store';
+import { routes } from 'routes';
+import MainTemplate from 'templates/MainTemplate';
+import Notes from 'views/Notes';
+import Todo from 'views/Todo';
 
 const Root = () => (
-  <BrowserRouter>
-    <MainTemplate>
-      <Switch>
-        <Route exact path={routes.home} component={() => <Redirect to={routes.todos} />} />
-        <Route exact path={routes.todos} component={Todo} />
-        <Route path={routes.todo} component={DetailsPage} />
-        <Route exact path={routes.notes} component={Notes} />
-        <Route path={routes.note} component={DetailsPage} />
-      </Switch>
-    </MainTemplate>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <MainTemplate>
+        <Switch>
+          <Route exact path={routes.home} component={() => <Redirect to={routes.todos} />} />
+          <Route exact path={routes.todos} component={Todo} />
+          <Route path={routes.todo} component={DetailsPage} />
+          <Route exact path={routes.notes} component={Notes} />
+          <Route path={routes.note} component={DetailsPage} />
+        </Switch>
+      </MainTemplate>
+    </BrowserRouter>
+  </Provider>
 );
 
 export default Root;

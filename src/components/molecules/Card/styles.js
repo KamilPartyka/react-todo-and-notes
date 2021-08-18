@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import Paragraph from '../../atoms/Paragraph/Paragraph';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
 
 export const StyledWrapper = styled.div`
   background: ${({ theme }) => theme.white};
@@ -7,8 +7,8 @@ export const StyledWrapper = styled.div`
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.25);
   border-radius: 1rem;
   overflow: hidden;
-  min-height: 33rem;
-  max-width: 39rem;
+  min-height: 36rem;
+  max-width: 38rem;
   display: grid;
   grid-template-rows: 0.25fr 1fr;
 `;
