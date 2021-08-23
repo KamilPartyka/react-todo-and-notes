@@ -9,6 +9,7 @@ export const StyledWrapper = styled.div`
   overflow: hidden;
   min-height: 36rem;
   max-width: 38rem;
+  min-width: 30rem;
   display: grid;
   grid-template-rows: 0.25fr 1fr;
 `;

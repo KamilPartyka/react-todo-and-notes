@@ -6,7 +6,7 @@ import GridTemplate from 'templates/GridTemplate';
 const Todo = () => {
   const storeTodos = useSelector((state) => state.todos);
   return (
-    <GridTemplate pageType={TYPE.todos} numerOfItems={storeTodos.length}>
+    <GridTemplate numerOfItems={storeTodos.length}>
       <>
         {storeTodos.map((todo) => (
           <Card

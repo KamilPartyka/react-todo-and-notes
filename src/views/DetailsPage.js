@@ -1,8 +1,4 @@
-import { useState, useEffect } from 'react';
-import PropTypes, { oneOfType } from 'prop-types';
 import DetailsTemplate from 'templates/DetailsTemplate';
-import { routes } from 'routes';
-import { TYPE } from 'utils/constants';
 
 const dummyArticle = {
   id: 1,
@@ -12,36 +8,12 @@ const dummyArticle = {
   created: '1 day',
 };
 
-const DetailsPage = ({ match }) => {
-  const [state, setState] = useState('');
-
-  useEffect(() => {
-    if (match.path === routes.note) {
-      setState(TYPE.notes.name);
-    }
-    if (match.path === routes.todo) {
-      setState(TYPE.todos.name);
-    }
-  }, []);
-
-  return (
-    <DetailsTemplate
-      pageType={state}
-      title={dummyArticle.title}
-      created={dummyArticle.created}
-      content={dummyArticle.content}
-    />
-  );
-};
-DetailsPage.propTypes = {
-  match: oneOfType([
-    PropTypes.string,
-    PropTypes.shape({
-      params: PropTypes.shape({
-        patch: PropTypes.string,
-      }),
-    }),
-  ]).isRequired,
-};
+const DetailsPage = () => (
+  <DetailsTemplate
+    title={dummyArticle.title}
+    created={dummyArticle.created}
+    content={dummyArticle.content}
+  />
+);
 
 export default DetailsPage;

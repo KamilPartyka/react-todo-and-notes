@@ -1,9 +1,11 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Input from 'components/atoms/Input/Input';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import UserPageTemplate from 'templates/UserPageTemplate';
+import PageContext from 'utils/context';
 
 const StyledWrapper = styled.div`
   padding: 3rem;
@@ -21,25 +23,32 @@ const StyledPageHeader = styled.div`
     margin: 1.5rem 0;
   }
 `;
+const StyledHeading = styled(Heading)`
+  ::first-letter {
+    text-transform: uppercase;
+  }
+`;
 
-const GridTemplate = ({ children, pageType, numerOfItems }) => (
-  <UserPageTemplate>
-    <StyledWrapper>
-      <StyledPageHeader>
-        <Input search placeholder="search" />
-        <Heading big>{pageType.text}</Heading>
-        <Paragraph>
-          {numerOfItems} {pageType.text}
-        </Paragraph>
-      </StyledPageHeader>
-      <StyledGrid>{children}</StyledGrid>
-    </StyledWrapper>
-  </UserPageTemplate>
-);
+const GridTemplate = ({ children, numerOfItems }) => {
+  const pageType = useContext(PageContext);
+  return (
+    <UserPageTemplate>
+      <StyledWrapper>
+        <StyledPageHeader>
+          <Input search placeholder="search" />
+          <StyledHeading big>{pageType}</StyledHeading>
+          <Paragraph>
+            {numerOfItems} {pageType}
+          </Paragraph>
+        </StyledPageHeader>
+        <StyledGrid>{children}</StyledGrid>
+      </StyledWrapper>
+    </UserPageTemplate>
+  );
+};
 
 GridTemplate.propTypes = {
   children: PropTypes.element.isRequired,
-  pageType: PropTypes.objectOf(PropTypes.string.isRequired, PropTypes.string.isRequired).isRequired,
   numerOfItems: PropTypes.number.isRequired,
 };
 

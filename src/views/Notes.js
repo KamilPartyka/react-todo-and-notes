@@ -7,7 +7,7 @@ const Notes = () => {
   const storeNotes = useSelector((state) => state.notes);
 
   return (
-    <GridTemplate pageType={TYPE.notes} numerOfItems={storeNotes.length}>
+    <GridTemplate numerOfItems={storeNotes.length}>
       <>
         {storeNotes.map((note) => (
           <Card

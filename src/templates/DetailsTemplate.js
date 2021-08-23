@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import PageContext from 'utils/context';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
@@ -37,20 +39,22 @@ const StyledParagraph = styled(Paragraph)`
   margin: 3rem 0;
 `;
 
-const DetailsTemplate = ({ pageType, title, created, content }) => {
+const DetailsTemplate = ({ title, created, content }) => {
+  const pageType = useContext(PageContext);
+
   const history = useHistory();
   const handleButtonClick = () =>
     history.push(pageType === TYPE.todos.name ? TYPE.todos.link : TYPE.notes.link);
 
   return (
-    <UserPageTemplate pageType={pageType}>
+    <UserPageTemplate>
       <StyledWrapper>
         <StyledPageHeader>
           <StyledHeading big>{title}</StyledHeading>
           <StyledCreated>{created}</StyledCreated>
         </StyledPageHeader>
         <StyledParagraph>{content}</StyledParagraph>
-        <Button onClick={handleButtonClick} color={pageType}>
+        <Button onClick={handleButtonClick} color={TYPE[pageType].color}>
           save / close
         </Button>
       </StyledWrapper>
@@ -59,7 +63,6 @@ const DetailsTemplate = ({ pageType, title, created, content }) => {
 };
 
 DetailsTemplate.propTypes = {
-  pageType: PropTypes.string.isRequired,
   title: PropTypes.string,
   created: PropTypes.string,
   content: PropTypes.string,
