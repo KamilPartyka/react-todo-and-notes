@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 
 export const StyledButton = styled.button`
   background: ${({ theme, color }) => theme[color]};

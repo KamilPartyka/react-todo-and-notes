@@ -27,4 +27,5 @@ export const theme = {
   // filters for svg icons
   secondaryFilter: `filter: invert(88%) sepia(29%) saturate(874%) hue-rotate(336deg) brightness(96%) contrast(90%); `,
   tertiaryFilter: `filter: invert(90%) sepia(30%) saturate(4056%) hue-rotate(316deg) brightness(102%) contrast(91%);`,
+  darkFilter: `filter: invert(26%) sepia(18%) saturate(995%) hue-rotate(152deg) brightness(88%) contrast(96%);`,
 };

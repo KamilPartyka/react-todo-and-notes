@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Button from 'components/atoms/Button/Button';
 import Heading from 'components/atoms/Heading/Heading';
 import { removeItem } from 'redux/actions';
@@ -66,11 +66,11 @@ const Card = ({ cardType, title, created, content, id }) => {
 };
 
 Card.propTypes = {
-  cardType: PropTypes.objectOf(PropTypes.string.isRequired, PropTypes.string.isRequired).isRequired,
+  cardType: PropTypes.objectOf(PropTypes.string, PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default Card;

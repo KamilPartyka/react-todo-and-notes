@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 
 export const StyledWrapper = styled.div`

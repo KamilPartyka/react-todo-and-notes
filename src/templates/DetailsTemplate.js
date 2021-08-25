@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import PageContext from 'utils/context';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { useHistory } from 'react-router-dom';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';

@@ -8,7 +8,7 @@ const Button = ({ children, color, isSmall, ...props }) => (
 );
 
 Button.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
   color: PropTypes.string.isRequired,
   isSmall: PropTypes.bool,
 };

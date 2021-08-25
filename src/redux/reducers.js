@@ -28,6 +28,13 @@ const initialState = {
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '10 days',
     },
+    {
+      id: 5,
+      title: 'You it React bad gave for?',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+      created: '11 days',
+    },
   ],
   todos: [
     {
@@ -69,6 +76,11 @@ const rootReducer = (state = initialState, action) => {
         [action.payload.itemType]: [
           ...state[action.payload.itemType].filter((item) => item.id !== action.payload.id),
         ],
+      };
+    case 'ADD_ITEM':
+      return {
+        ...state,
+        [action.payload.itemType]: [...state[action.payload.itemType], action.payload.item],
       };
     default:
       return state;

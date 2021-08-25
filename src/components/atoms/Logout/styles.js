@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import signOut from 'assets/signOut.svg';
 
 export const StyledLogout = styled.span`

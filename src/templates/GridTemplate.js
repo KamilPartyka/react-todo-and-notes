@@ -1,14 +1,18 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Input from 'components/atoms/Input/Input';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import UserPageTemplate from 'templates/UserPageTemplate';
 import PageContext from 'utils/context';
+import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
+import plusIcon from 'assets/plus.svg';
+import NewItemBar from 'components/organisms/NewItemBar/NewItemBar';
 
 const StyledWrapper = styled.div`
   padding: 3rem;
+  position: relative;
 `;
 const StyledGrid = styled.div`
   display: grid;
@@ -29,8 +33,21 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
+const StyledButtonIcon = styled(ButtonIcon)`
+  background-color: transparent;
+  cursor: pointer;
+  ${({ theme }) => theme.darkFilter};
+  position: fixed;
+  right: 4rem;
+  bottom: 4rem;
+`;
+
 const GridTemplate = ({ children, numerOfItems }) => {
+  const [isNewItemBarVisible, setIsNewItemBarVisible] = useState(false);
+  const handleNewItemBar = () => setIsNewItemBarVisible(!isNewItemBarVisible);
+
   const pageType = useContext(PageContext);
+
   return (
     <UserPageTemplate>
       <StyledWrapper>
@@ -42,6 +59,8 @@ const GridTemplate = ({ children, numerOfItems }) => {
           </Paragraph>
         </StyledPageHeader>
         <StyledGrid>{children}</StyledGrid>
+        <StyledButtonIcon icon={plusIcon} onClick={handleNewItemBar} />
+        <NewItemBar isVisible={isNewItemBarVisible} callbackFn={handleNewItemBar} />
       </StyledWrapper>
     </UserPageTemplate>
   );

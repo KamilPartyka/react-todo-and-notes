@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { NavLink } from 'react-router-dom';
 import note from 'assets/note.svg';
 import list from 'assets/list.svg';
