@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { StyledButton } from 'components/atoms/Button/styles';
 
 const Button = ({ children, color, isSmall, ...props }) => (
-  <StyledButton isSmall={isSmall} color={color} type="button" {...props}>
+  <StyledButton isSmall={isSmall} color={color} {...props}>
     {children}
   </StyledButton>
 );

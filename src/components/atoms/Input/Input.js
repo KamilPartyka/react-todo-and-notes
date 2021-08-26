@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { StyledInput, StyledTextarea } from 'components/atoms/Input/styles';
 
-const Input = ({ search, placeholder, isTextarea }) =>
+const Input = ({ search, placeholder, isTextarea, ...props }) =>
   isTextarea ? (
-    <StyledTextarea placeholder={placeholder} />
+    <StyledTextarea placeholder={placeholder} {...props} />
   ) : (
-    <StyledInput placeholder={placeholder} icon={search} />
+    <StyledInput placeholder={placeholder} icon={search} {...props} />
   );
 
 Input.propTypes = {

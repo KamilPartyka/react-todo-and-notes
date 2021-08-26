@@ -33,7 +33,7 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledTextarea = styled.textarea`
-  margin: 2.5rem 0;
+  margin-top: 2.5rem;
   padding: 1.2rem 2rem;
   font-size: 1.5rem;
   background: ${({ theme }) => theme.lightGrey};

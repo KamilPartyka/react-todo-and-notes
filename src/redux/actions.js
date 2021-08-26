@@ -20,7 +20,3 @@ export const addItem = (itemType, itemContent) => {
     },
   };
 };
-// id: 1,
-// title: 'Wake me up when Vue ends',
-// content: 'Lorem ipsum dolor situs modi ',
-// created: '1 day',

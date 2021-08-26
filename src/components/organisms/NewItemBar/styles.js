@@ -2,6 +2,9 @@ import styled from 'styled-components/macro';
 import Button from 'components/atoms/Button/Button';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import Heading from 'components/atoms/Heading/Heading';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import { TYPE } from 'utils/constants';
+import { Form } from 'formik';
 
 export const StyledWrapper = styled.div`
   position: fixed;
@@ -15,6 +18,8 @@ export const StyledWrapper = styled.div`
   z-index: 9;
   padding: 8rem 5rem 0 5rem;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  transform: translate(${({ isVisible }) => (isVisible ? '0' : '100%')});
+  transition: transform 500ms ease-in-out;
 
   ::before {
     content: '';
@@ -26,18 +31,21 @@ export const StyledWrapper = styled.div`
     width: 1.5rem;
     background-color: ${({ theme }) => theme.primary};
   }
-
-  transform: translate(${({ isVisible }) => (isVisible ? '0' : '100%')});
-  transition: transform 500ms ease-in-out;
 `;
 
 export const StyledHeading = styled(Heading)`
-  margin: 2rem 0;
+  margin: ${({ pageType }) => (pageType === TYPE.todos.name ? '2rem 0 0 0' : '2rem 0')};
   font-size: ${({ theme }) => theme.fontSize.xl};
 `;
 
+export const StyledParagraph = styled(Paragraph)`
+  margin-bottom: 2rem;
+  font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: ${({ theme }) => theme.bold};
+`;
+
 export const StyledButton = styled(Button)`
-  margin: 2rem 0;
+  margin: 3rem 0 1rem 0;
 `;
 
 export const StyledButtonIcon = styled(ButtonIcon)`
@@ -61,4 +69,15 @@ export const StyledButtonIcon = styled(ButtonIcon)`
     top: 4rem;
     transform: rotate(-45deg);
   }
+`;
+
+export const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const StyledError = styled.div`
+  color: red;
+  padding: 0.2rem 0.8rem;
+  font-size: ${({ theme }) => theme.fontSize.xs};
 `;

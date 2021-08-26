@@ -2,12 +2,10 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import styled from 'styled-components/macro';
 import Button from 'components/atoms/Button/Button';
 import Heading from 'components/atoms/Heading/Heading';
 import { removeItem } from 'redux/actions';
 import { TYPE } from 'utils/constants';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import {
   StyledWrapper,
   StyledInnerWrapper,
@@ -15,13 +13,9 @@ import {
   StyledParagraph,
   StyledList,
   StyledListItem,
+  StyledReadMe,
+  StyledInsideWrapper,
 } from 'components/molecules/Card/styles';
-
-// fixme
-const StyledReadMe = styled(Paragraph)`
-  font-weight: bold;
-  cursor: pointer;
-`;
 
 const Card = ({ cardType, title, created, content, id }) => {
   const dispatch = useDispatch();
@@ -56,10 +50,12 @@ const Card = ({ cardType, title, created, content, id }) => {
         ) : (
           <StyledParagraph>{content}</StyledParagraph>
         )}
-        <StyledReadMe onClick={handleCardClick}>Read more</StyledReadMe>
-        <Button color="lightGrey" isSmall onClick={() => dispatch(removeItem(cardType.name, id))}>
-          remove
-        </Button>
+        <StyledInsideWrapper>
+          <Button color="lightGrey" isSmall onClick={() => dispatch(removeItem(cardType.name, id))}>
+            remove
+          </Button>
+          <StyledReadMe onClick={handleCardClick}>Read more</StyledReadMe>
+        </StyledInsideWrapper>
       </StyledInnerWrapper>
     </StyledWrapper>
   );

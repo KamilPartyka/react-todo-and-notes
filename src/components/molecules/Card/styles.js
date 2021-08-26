@@ -25,6 +25,8 @@ export const StyledInnerWrapper = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      max-height: 35rem;
+      overflow-y: auto;
     `}
 `;
 
@@ -58,4 +60,17 @@ export const StyledListItem = styled.div`
   position: relative;
   padding: 0.3rem;
   padding-right: 2rem;
+`;
+
+export const StyledInsideWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+`;
+export const StyledReadMe = styled(Paragraph)`
+  display: inline-block;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 1.5rem;
 `;
