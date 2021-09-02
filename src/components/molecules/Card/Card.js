@@ -1,11 +1,11 @@
-import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import Button from 'components/atoms/Button/Button';
-import Heading from 'components/atoms/Heading/Heading';
+import { useDispatch } from 'react-redux';
 import { removeItem } from 'redux/actions';
 import { TYPE } from 'utils/constants';
+import PropTypes from 'prop-types';
+import Button from 'components/atoms/Button/Button';
+import Heading from 'components/atoms/Heading/Heading';
 import {
   StyledWrapper,
   StyledInnerWrapper,
@@ -13,20 +13,15 @@ import {
   StyledParagraph,
   StyledList,
   StyledListItem,
-  StyledReadMe,
+  StyledReadMore,
   StyledInsideWrapper,
 } from 'components/molecules/Card/styles';
 
 const Card = ({ cardType, title, created, content, id }) => {
   const dispatch = useDispatch();
   const [state, setState] = useState(false);
-  const handleCardClick = () => setState(true);
-
-  const slicedContentArr = content.split(',');
-  const arrWithUniqueKey = slicedContentArr.map((item, index) => ({
-    text: item,
-    id: `${id}_${index}`,
-  }));
+  const handleReadMoreClick = () => setState(true);
+  const handleRemove = () => dispatch(removeItem(cardType.name, id));
 
   if (state) {
     return <Redirect to={`${cardType.link}/${id}`} />;
@@ -41,20 +36,25 @@ const Card = ({ cardType, title, created, content, id }) => {
       <StyledInnerWrapper flex>
         {cardType.name === TYPE.todos.name ? (
           <StyledList>
-            {arrWithUniqueKey.map((item) => (
-              <li key={item.id} id={`id${item.id}`}>
-                <StyledListItem>{item.text}</StyledListItem>
-              </li>
-            ))}
+            {content
+              .map((item, index) => ({
+                text: item,
+                id: `${id}_${index}`,
+              }))
+              .map((item) => (
+                <li key={item.id} id={`id${item.id}`}>
+                  <StyledListItem>{item.text}</StyledListItem>
+                </li>
+              ))}
           </StyledList>
         ) : (
           <StyledParagraph>{content}</StyledParagraph>
         )}
         <StyledInsideWrapper>
-          <Button color="lightGrey" isSmall onClick={() => dispatch(removeItem(cardType.name, id))}>
+          <Button color="lightGrey" isSmall onClick={handleRemove}>
             remove
           </Button>
-          <StyledReadMe onClick={handleCardClick}>Read more</StyledReadMe>
+          <StyledReadMore onClick={handleReadMoreClick}>Read more</StyledReadMore>
         </StyledInsideWrapper>
       </StyledInnerWrapper>
     </StyledWrapper>
@@ -65,7 +65,7 @@ Card.propTypes = {
   cardType: PropTypes.objectOf(PropTypes.string, PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 

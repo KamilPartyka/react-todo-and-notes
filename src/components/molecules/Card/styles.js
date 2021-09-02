@@ -68,7 +68,8 @@ export const StyledInsideWrapper = styled.div`
   align-items: center;
   margin-top: 1rem;
 `;
-export const StyledReadMe = styled(Paragraph)`
+
+export const StyledReadMore = styled(Paragraph)`
   display: inline-block;
   font-weight: bold;
   cursor: pointer;
