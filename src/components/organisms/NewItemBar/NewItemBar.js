@@ -1,6 +1,14 @@
 import { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Field, Formik, ErrorMessage } from 'formik';
+import { addItem } from 'redux/actions';
+import PageContext from 'utils/context';
+import PropTypes from 'prop-types';
+import { TYPE } from 'utils/constants';
 import plusIcon from 'assets/plus.svg';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import Button from 'components/atoms/Button/Button';
+import Input from 'components/atoms/Input/Input';
 import {
   StyledWrapper,
   StyledHeading,
@@ -13,14 +21,6 @@ import {
   StyledTodoList,
   StyledTodoListItem,
 } from 'components/organisms/NewItemBar/styles';
-import PageContext from 'utils/context';
-import { TYPE } from 'utils/constants';
-import PropTypes from 'prop-types';
-import { addItem } from 'redux/actions';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
-import Button from 'components/atoms/Button/Button';
-import Input from 'components/atoms/Input/Input';
-import { Field, Formik, ErrorMessage } from 'formik';
 
 const NewItemBar = ({ isVisible, callbackFn: closeModal }) => {
   const dispatch = useDispatch();

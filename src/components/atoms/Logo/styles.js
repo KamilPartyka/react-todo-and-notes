@@ -9,4 +9,5 @@ export const StyledLogo = styled.h1`
   color: ${({ theme }) => theme.white};
   margin: 0;
   cursor: pointer;
+  user-select: none;
 `;
