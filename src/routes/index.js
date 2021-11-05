@@ -4,5 +4,5 @@ export const routes = {
   todo: '/todos/:id',
   notes: '/notes',
   note: '/notes/:id',
-  login: '/login',
+  authorization: '/authorization',
 };
