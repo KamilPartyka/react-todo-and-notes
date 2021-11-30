@@ -9,7 +9,6 @@ import Heading from 'components/atoms/Heading/Heading';
 import {
   StyledWrapper,
   StyledInnerWrapper,
-  StyledDateInfo,
   StyledParagraph,
   StyledList,
   StyledListItem,
@@ -17,7 +16,7 @@ import {
   StyledInsideWrapper,
 } from 'components/molecules/Card/styles';
 
-const Card = ({ cardType, title, created, content, id }) => {
+const Card = ({ cardType, title, content, id }) => {
   const dispatch = useDispatch();
   const [state, setState] = useState(false);
   const handleReadMoreClick = () => setState(true);
@@ -31,7 +30,6 @@ const Card = ({ cardType, title, created, content, id }) => {
     <StyledWrapper>
       <StyledInnerWrapper color={cardType.color}>
         <Heading>{title}</Heading>
-        <StyledDateInfo>{created}</StyledDateInfo>
       </StyledInnerWrapper>
       <StyledInnerWrapper flex>
         {cardType.name === TYPE.todos.name ? (
@@ -64,7 +62,6 @@ const Card = ({ cardType, title, created, content, id }) => {
 Card.propTypes = {
   cardType: PropTypes.objectOf(PropTypes.string, PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
-  created: PropTypes.string.isRequired,
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };

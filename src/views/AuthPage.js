@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { TYPE } from 'utils/constants';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import styled from 'styled-components/macro';
-import axios from 'axios';
 import AuthTemplate from 'templates/AuthTemplate';
+import { authenticate, register } from 'redux/actions';
+import { Redirect } from 'react-router-dom';
+import { routes } from 'routes';
 
 const StyledForm = styled(Form)`
   min-width: 35rem;
@@ -57,40 +60,23 @@ const handleValidate = (values) => {
   return errors;
 };
 
-const handleLoginSubmit = ({ username, password }) => {
-  axios
-    .post('http://localhost:9000/api/user/login', {
-      username,
-      password,
-    })
-    .then(() => {
-      // eslint-disable-next-line no-console
-      console.log('login success');
-    })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log(error);
-    });
-};
-
-const handleRegisterSubmit = ({ username, password }) => {
-  axios
-    .post('http://localhost:9000/api/user/register', {
-      username,
-      password,
-    })
-    .then(() => {
-      // eslint-disable-next-line no-console
-      console.log('register success');
-    })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log(error);
-    });
-};
-
 const AuthPage = () => {
+  const dispatch = useDispatch();
+  const userID = useSelector((state) => state.rootReducer.userID);
+
   const [isLogin, setIsLogin] = useState(true);
+
+  const handleLoginSubmit = ({ username, password }) => {
+    dispatch(authenticate(username, password));
+  };
+
+  const handleRegisterSubmit = ({ username, password }) => {
+    dispatch(register(username, password));
+  };
+
+  if (userID) {
+    return <Redirect to={routes.home} />;
+  }
 
   return (
     <AuthTemplate>

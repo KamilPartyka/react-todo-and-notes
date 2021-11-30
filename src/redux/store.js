@@ -1,11 +1,13 @@
-import { createStore } from 'redux';
-import notesApp from 'redux/reducers';
+import { configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
 
-/* eslint-disable no-underscore-dangle */
-const store = createStore(
-  notesApp /* preloadedState, */,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
-/* eslint-enable */
+import rootReducer from 'redux/reducers';
+
+const store = configureStore({
+  reducer: {
+    rootReducer,
+  },
+  middleware: [thunk],
+});
 
 export default store;

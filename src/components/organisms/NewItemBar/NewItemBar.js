@@ -40,7 +40,7 @@ const NewItemBar = ({ isVisible, callbackFn: closeModal }) => {
   // eslint-disable-next-line react/prop-types
   const FormikInput = ({ field, form, ...props }) => <StyledInput {...field} {...props} />;
 
-  const initialValues = { title: '', content: [''], created: '' };
+  const initialValues = { title: '', content: [''] };
 
   const handleValidateToDo = (values) => {
     const errors = {};

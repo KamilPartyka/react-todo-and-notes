@@ -31,15 +31,11 @@ const StyledHeading = styled(Heading)`
   }
 `;
 
-const StyledCreated = styled(Paragraph)`
-  margin: 0;
-  font-weight: ${({ theme }) => theme.bold};
-`;
 const StyledParagraph = styled(Paragraph)`
   margin: 3rem 0;
 `;
 
-const DetailsTemplate = ({ title, created, content }) => {
+const DetailsTemplate = ({ title, content }) => {
   const pageType = useContext(PageContext);
 
   const history = useHistory();
@@ -51,11 +47,10 @@ const DetailsTemplate = ({ title, created, content }) => {
       <StyledWrapper>
         <StyledPageHeader>
           <StyledHeading big>{title}</StyledHeading>
-          <StyledCreated>{created}</StyledCreated>
         </StyledPageHeader>
         <StyledParagraph>{content}</StyledParagraph>
         <Button onClick={handleButtonClick} color={TYPE[pageType].color}>
-          save / close
+          close
         </Button>
       </StyledWrapper>
     </UserPageTemplate>
@@ -64,14 +59,12 @@ const DetailsTemplate = ({ title, created, content }) => {
 
 DetailsTemplate.propTypes = {
   title: PropTypes.string,
-  created: PropTypes.string,
-  content: PropTypes.string,
+  content: PropTypes.arrayOf(PropTypes.string),
 };
 
 DetailsTemplate.defaultProps = {
   title: '',
-  created: '',
-  content: '',
+  content: [''],
 };
 
 export default DetailsTemplate;

@@ -30,11 +30,6 @@ export const StyledInnerWrapper = styled.div`
     `}
 `;
 
-export const StyledDateInfo = styled(Paragraph)`
-  font-weight: ${({ theme }) => theme.bold};
-  font-size: ${({ theme }) => theme.fontSize.xs};
-`;
-
 export const StyledParagraph = styled(Paragraph)`
   padding-bottom: 1.5rem;
 `;

@@ -14,6 +14,7 @@ const StyledWrapper = styled.div`
   padding: 3rem;
   position: relative;
 `;
+
 const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(38rem, 1fr));
@@ -21,12 +22,23 @@ const StyledGrid = styled.div`
   justify-items: center;
   align-items: center;
 `;
+
 const StyledPageHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+
   h2,
   p {
     margin: 1.5rem 0;
   }
+
+  div:last-of-type {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
+
 const StyledHeading = styled(Heading)`
   ::first-letter {
     text-transform: uppercase;
@@ -37,9 +49,7 @@ const StyledButtonIcon = styled(ButtonIcon)`
   background-color: transparent;
   cursor: pointer;
   ${({ theme }) => theme.darkFilter};
-  position: fixed;
-  right: 4rem;
-  bottom: 4rem;
+  transform: translateY(-30%);
 `;
 
 const GridTemplate = ({ children, numerOfItems }) => {
@@ -52,14 +62,18 @@ const GridTemplate = ({ children, numerOfItems }) => {
     <UserPageTemplate>
       <StyledWrapper>
         <StyledPageHeader>
-          <Input search placeholder="search" />
-          <StyledHeading big>{pageType}</StyledHeading>
-          <Paragraph>
-            {numerOfItems} {pageType}
-          </Paragraph>
+          <div>
+            <Input search placeholder="search" />
+            <StyledHeading big>{pageType}</StyledHeading>
+            <Paragraph>
+              {numerOfItems} {pageType}
+            </Paragraph>
+          </div>
+          <div>
+            <StyledButtonIcon icon={plusIcon} onClick={handleNewItemBar} />
+          </div>
         </StyledPageHeader>
         <StyledGrid>{children}</StyledGrid>
-        <StyledButtonIcon icon={plusIcon} onClick={handleNewItemBar} />
         <NewItemBar isVisible={isNewItemBarVisible} callbackFn={handleNewItemBar} />
       </StyledWrapper>
     </UserPageTemplate>
@@ -68,7 +82,10 @@ const GridTemplate = ({ children, numerOfItems }) => {
 
 GridTemplate.propTypes = {
   children: PropTypes.element.isRequired,
-  numerOfItems: PropTypes.number.isRequired,
+  numerOfItems: PropTypes.number,
 };
 
+GridTemplate.defaultProps = {
+  numerOfItems: null,
+};
 export default GridTemplate;

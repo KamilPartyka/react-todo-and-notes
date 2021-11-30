@@ -39,7 +39,7 @@ const Navbar = () => (
           />
         </li>
       </StyledLinksList>
-      <NavLink exact to={routes.authorization}>
+      <NavLink exact to={routes.authenticate}>
         <Logout />
       </NavLink>
     </StyledInnerWrapper>
